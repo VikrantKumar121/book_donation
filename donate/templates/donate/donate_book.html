@@ -1,0 +1,151 @@
+{% extends 'donate/base.html' %}
+
+{% load staticfiles %}
+
+{% block baaki_css %}
+<link rel = "stylesheet" href=" {% static 'donate/css/donate_book.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+      <form method="GET" action="#">
+      <div id="mathi" class="mathi">
+          <div class="container">
+              <div class="row">
+                  <h2 class="wow fadeInUp">Donate here</h2>
+                  <p class="wow fadeInUp" data-wow-delay="0.4s"><strong>{{request.user}}</strong></p>
+
+              </div>
+          </div>
+      </div>
+      </form>
+
+
+
+
+     <div class="book_ko_detail">
+      <div class="container">
+
+
+          <div class="col-lg-4 col-md-4"></div>
+
+          <div class="border hvr-float col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.1s ">
+
+              <form method="POST" action="">
+                    {% csrf_token %}
+
+            <div id="fill" class="fill">
+
+                <div class="input-group input-group-lg">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-book" aria-hidden="true"></i></span>
+                          <input type="text" name="Name" class="form-control" aria-describeby="sizing-addon1"  required="" id="id_Name" placeholder="Name of book"
+                         {% if form.Name.value %}
+                    value="{{form.Name.value}}"
+                                {% endif %}
+                                    >
+
+                 </div>
+
+
+               <div class="input-group input-group-lg ">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+                        <select class="form-control"  required="" name = "Class">
+                            <option value="" disabled selected>class</option>
+                            {% for i in class_count %}
+                            <option value="{{i}}"
+                                    {% if form.Class.value == i %}
+                                    selected
+                                    {% endif %}
+                            >{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+              <div class="input-group input-group-lg">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-street-view" aria-hidden="true"></i></span>
+                          <input type="text" name="Publisher" class="form-control" aria-describeby="sizing-addon1" required="" placeholder="Publisher"
+                                 {% if form.Publisher.value %}
+                                value="{{form.Publisher.value}}"
+                                        {% endif %}
+                                     >
+
+
+                    </div>
+
+              <div class="input-group input-group-lg" >
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+                        <select class="form-control" required="" name = "Edition">
+                            <option value="" disabled selected>Edition</option>
+
+                           {% for i in edition_count %}
+                            <option value="{{i}}"
+                                    {% if form.Edition.value == i %}
+                                    selected
+                                    {% endif %}
+                            >{{i}}</option>
+                            {% endfor %}
+
+
+                        </select>
+
+
+                    </div>
+
+
+              <div class="input-group input-group-lg ">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+                        <select class="form-control" required="" name = "Status">
+                            <option value="" disabled selected>status</option>
+                              <option value="Open"
+                                    {% if form.Status.value == "Open" %}
+                                    selected
+                                    {% endif %}
+                            >Open</option>
+                              <option value="Reserved"
+                                    {% if form.Status.value == "Reserved" %}
+                                    selected
+                                    {% endif %}
+                            >Reserved</option>
+                        </select>
+
+
+                    </div>
+              <div class="input-group input-group-lg " >
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-street-view" aria-hidden="true"></i></span>
+                          <input type="text" name="Your_Address" class="form-control" aria-describeby="sizing-addon1" required="" placeholder="Address"
+                                 {% if form.Your_Addresst.value %}
+                                   value="{{form.Your_Address.value}}"
+                                {% endif %}
+                                 >
+
+                    </div>
+
+
+               <div class="input-group input-group-lg ">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-street-view" aria-hidden="true"></i></span>
+                          <input type="tel" name="Phone_number" class="form-control" aria-describeby="sizing-addon1" required="" placeholder="Phone Number"
+                                 {% if form.Phone_number.value %}
+                                     value="{{form.Phone_number.value}}"
+                                {% endif %}
+                                 >
+
+                    </div>
+                <button class="btn btn-lg " > SUBMIT</button>
+                <!-- <a class="btn btn-primary" href="/profile">SUBMIT</a> -->
+
+
+          </div>
+
+      </form>
+
+          <div class="col-lg-4 col-md-4"></div>
+
+     </div>
+
+
+      </div>
+          </div>
+
+
+{% endblock %}

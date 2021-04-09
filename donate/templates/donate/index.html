@@ -1,0 +1,98 @@
+{% extends 'donate/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+
+
+      <div id="header" class="header">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-xs-12 wow bounceInLeft" data-wow-delay="0.3s">
+                      <h1>Donate Your Books !</h1>
+                      <p> </p>
+                      <button class="btn btn-md btn-danger"><a href="{% url 'donate_book' %}">Donate Now</a> </button>
+                      <button class="btn btn-md btn-warning"><a href="#search">Search for Books</a></button>
+                  </div>
+                  <div class="col-lg-6 col-md-6" >
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <br><br>
+    <div>
+      <td><b>No. of online users : {{user_log}}</b></td>
+    </div>
+    <br><br>
+      <form method="GET" action="{% url 'search_list' %}">
+      <div id="search" class="search">
+          <div class="container">
+              <div class="row">
+                  <h2 class="wow fadeInUp">Search Books</h2>
+                  <p class="wow fadeInUp" data-wow-delay="0.2s">Search your books here</p>
+
+                  <div class="col-lg-3 col-md-3">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.3s">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-book" aria-hidden="true"></i></span>
+                          <input type="text" name="q1" required="" class="form-control" aria-describeby="sizing-addon1" placeholder="Name of book">
+                     </div>
+                  </div>
+
+
+                  <div class="col-lg-2 col-md-2">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.4s">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+<!--                          <input type="text" name="q1" class="form-control" aria-describeby="sizing-addon1" placeholder="class">-->
+                        <select class="form-control" required="" name = "q2">
+                            <option value="" disabled selected>Class</option>
+                            {% for i in class_count %}
+                             <option value = "{{i}}">{{i}}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                  </div>
+
+
+                  <!-- <div class="col-lg-3">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.5s">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-street-view" aria-hidden="true"></i></span>
+                          <input type="text" name="q3" required="" class="form-control" aria-describeby="sizing-addon1" placeholder="Address">
+                    </div>
+                  </div> -->
+
+
+                  <!-- <div class="col-lg-2">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.7s">
+                          <span class="input-group-addon" id-sizing-addon1><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                         <input type="text" name="q2" class="form-control" aria-describeby="sizing-addon1" placeholder="ward no">
+                         <select class="form-control" required="" name = "q4">
+                            <option value="" disabled selected>Ward</option>
+                            {% for i in ward_count %}
+                             <option value = "{{i}}">{{i}}</option>
+                            {% endfor %}
+                         </select>
+                    </div>
+                  </div> -->
+
+                  <div class="col-lg-2" >
+                       <button class="btn btn-lg wow fadeInUp" data-wow-delay="0.8s" type="submit"> Search</button>
+                  </div>
+
+
+
+
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+      </form>
+
+
+{% endblock %}
